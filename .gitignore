@@ -5,3 +5,7 @@ ROAD_SIGNS
 *.tar
 *.png
 *.onnx
+*.pt
+*.jpg
+*.png
+ultralytics*

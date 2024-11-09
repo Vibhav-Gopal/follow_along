@@ -27,7 +27,7 @@ def main():
     train_loader, test_loader, train_eval_loader = get_loaders(
         train_csv_path = config.DATASET+"/train.csv", test_csv_path = config.DATASET + "/test.csv"
     )
-    checkpoint_file="checkpoint.pth.tar"
+    checkpoint_file="yolov3.pt.tar"
     print("=> Loading checkpoint")
     checkpoint = torch.load(checkpoint_file, map_location=config.DEVICE)
     model.load_state_dict(checkpoint["state_dict"])
@@ -38,25 +38,25 @@ def main():
 
     ).to(config.DEVICE)
     print("Model loaded")
-
-    # check_class_accuracy(model, test_loader, threshold=.5)
-    # pred_boxes, true_boxes = get_evaluation_bboxes(
-    #     test_loader,
-    #     model,
-    #     iou_threshold=config.NMS_IOU_THRESH,
-    #     anchors=config.ANCHORS,
-    #     threshold=config.CONF_THRESHOLD,
-    # )
-    # mapval = mean_average_precision(
-    #     pred_boxes,
-    #     true_boxes,
-    #     iou_threshold=config.MAP_IOU_THRESH,
-    #     box_format="midpoint",
-    #     num_classes=config.NUM_CLASSES,
-    # )
-    # print(f"MAP: {mapval.item()}")
-    # print("Done")
-    plot_couple_examples(model, test_loader, 0.5, 0.1, scaled_anchors)
+    model.eval()
+    check_class_accuracy(model, test_loader, threshold=.5)
+    pred_boxes, true_boxes = get_evaluation_bboxes(
+        test_loader,
+        model,
+        iou_threshold=config.NMS_IOU_THRESH,
+        anchors=config.ANCHORS,
+        threshold=config.CONF_THRESHOLD,
+    )
+    mapval = mean_average_precision(
+        pred_boxes,
+        true_boxes,
+        iou_threshold=config.MAP_IOU_THRESH,
+        box_format="midpoint",
+        num_classes=config.NUM_CLASSES,
+    )
+    print(f"MAP: {mapval.item()}")
+    print("Done")
+    # plot_couple_examples(model, test_loader, 0.5, 0.1, scaled_anchors)
     # model.train()
 
 if __name__ == "__main__":
