@@ -1,0 +1,7 @@
+__pycache__
+.vscode
+PASCAL_VOC
+ROAD_SIGNS
+*.tar
+*.png
+*.onnx
