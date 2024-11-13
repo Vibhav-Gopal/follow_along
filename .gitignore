@@ -11,4 +11,4 @@ ROAD_SIGNS
 *.zip
 from_server/*
 ultralytics*
-trafic_data
+trafic_data*

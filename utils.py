@@ -235,8 +235,8 @@ def mean_average_precision(
 def plot_image(image, boxes):
     """Plots predicted bounding boxes on the image"""
     cmap = plt.get_cmap("tab20b")
-    # class_labels = config.COCO_LABELS if config.DATASET=='COCO' else config.PASCAL_CLASSES
-    class_labels = config.TRAFIC_DATA_LABELS
+    class_labels = config.COCO_LABELS if config.DATASET=='COCO' else config.PASCAL_CLASSES
+    # class_labels = config.TRAFIC_DATA_LABELS
     colors = [cmap(i) for i in np.linspace(0, 1, len(class_labels))]
     im = np.array(image)
     height, width, _ = im.shape

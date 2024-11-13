@@ -5,14 +5,14 @@ import torch
 from albumentations.pytorch import ToTensorV2
 from utils import seed_everything
 
-DATASET = 'trafic_data'
+DATASET = 'PASCAL_VOC'
 # DATASET = 'ROAD_SIGNS'
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 # seed_everything()  # If you want deterministic behavior
-NUM_WORKERS = 4
-BATCH_SIZE = 8
+NUM_WORKERS = 8
+BATCH_SIZE = 6
 IMAGE_SIZE = 640
-NUM_CLASSES = 21
+NUM_CLASSES = 20
 # NUM_CLASSES = 4
 LEARNING_RATE = 1e-4
 WEIGHT_DECAY = 1e-7
