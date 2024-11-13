@@ -10,11 +10,11 @@ DATASET = 'trafic_data'
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 # seed_everything()  # If you want deterministic behavior
 NUM_WORKERS = 4
-BATCH_SIZE = 2
+BATCH_SIZE = 8
 IMAGE_SIZE = 640
 NUM_CLASSES = 21
 # NUM_CLASSES = 4
-LEARNING_RATE = 1e-5
+LEARNING_RATE = 1e-4
 WEIGHT_DECAY = 1e-7
 NUM_EPOCHS = 200
 CONF_THRESHOLD = 0.5
