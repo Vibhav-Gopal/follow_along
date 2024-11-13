@@ -8,4 +8,7 @@ ROAD_SIGNS
 *.pt
 *.jpg
 *.png
+*.zip
+from_server/*
 ultralytics*
+trafic_data

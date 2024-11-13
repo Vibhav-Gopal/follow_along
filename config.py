@@ -5,14 +5,14 @@ import torch
 from albumentations.pytorch import ToTensorV2
 from utils import seed_everything
 
-DATASET = 'PASCAL_VOC'
+DATASET = 'trafic_data'
 # DATASET = 'ROAD_SIGNS'
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 # seed_everything()  # If you want deterministic behavior
 NUM_WORKERS = 4
-BATCH_SIZE = 16
-IMAGE_SIZE = 448
-NUM_CLASSES = 20
+BATCH_SIZE = 2
+IMAGE_SIZE = 640
+NUM_CLASSES = 21
 # NUM_CLASSES = 4
 LEARNING_RATE = 1e-5
 WEIGHT_DECAY = 1e-7
@@ -22,7 +22,7 @@ MAP_IOU_THRESH = 0.15
 NMS_IOU_THRESH = 0.15
 S = [IMAGE_SIZE // 32, IMAGE_SIZE // 16, IMAGE_SIZE // 8]
 PIN_MEMORY = True
-LOAD_MODEL = True
+LOAD_MODEL = False
 SAVE_MODEL = True
 CHECKPOINT_FILE = "checkpoint.pth.tar"
 IMG_DIR = DATASET + "/images/"
@@ -181,3 +181,5 @@ ROAD_SIGNS_LABELS =[
     "mandatory",
     "other"
 ]
+
+TRAFIC_DATA_LABELS = ['ambulance', 'army vehicle', 'auto rickshaw', 'bicycle', 'bus', 'car', 'garbagevan', 'human hauler', 'minibus', 'minivan', 'motorbike', 'pickup', 'policecar', 'rickshaw', 'scooter', 'suv', 'taxi', 'three wheelers -CNG-', 'truck', 'van', 'wheelbarrow']
